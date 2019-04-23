@@ -1,0 +1,83 @@
+.skeleton {
+  &-blk {
+    height: 100%;
+    width: 100%;
+    border-color: #f2f4fa;
+    background-color: #f2f4fa;
+  }
+
+  &-shine {
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(
+      100deg,
+      rgba(255, 255, 255, 0),
+      rgba(255, 255, 255, 0.7) 50%,
+      rgba(255, 255, 255, 0) 80%
+    );
+    border-color: transparent;
+
+    animation-name: skeletonShine;
+    animation-duration: 1000ms;
+    animation-iteration-count: infinite;
+    animation-timing-function: linear;
+
+    @keyframes skeletonShine {
+      from {
+        transform: translateX(-100%);
+      }
+      to {
+        transform: translateX(100%);
+      }
+    }
+  }
+}
+
+.li-audio {
+  display: flex;
+  width: 100%;
+  align-items: center;
+
+  &-info {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &-attr {
+    height: 45px;
+    width: 70%;
+
+    &-can {
+      margin-top: 28px;
+    }
+  }
+
+  &-title {
+    height: 67px;
+    width: 40%;
+
+    &-can {
+      display: flex;
+      align-items: center;
+    }
+  }
+
+  &-period {
+    &-can {
+      margin-left: 80px;
+    }
+  }
+
+  &-action {
+    margin-left: 97px;
+    width: 96px;
+    height: 96px;
+
+    & .skeleton {
+      &-blk {
+        border-radius: 96px / 2;
+      }
+    }
+  }
+}

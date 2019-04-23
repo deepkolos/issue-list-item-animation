@@ -1,0 +1,28 @@
+<script src="./li-audio-skeleton.js"></script>
+<style src="./li-audio-skeleton.less" lang="less"></style>
+
+<template>
+  <div class="li-audio">
+    <!-- 音频信息 -->
+    <div class="li-audio-info">
+      <div class="li-audio-title-can">
+        <stack class="li-audio-title">
+          <div class="skeleton-blk"></div>
+          <div class="skeleton-shine"></div>
+        </stack>
+      </div>
+
+      <div class="li-audio-attr-can">
+        <stack class="li-audio-attr">
+          <div class="skeleton-blk"></div>
+          <div class="skeleton-shine"></div>
+        </stack>
+      </div>
+    </div>
+
+    <!-- 按钮 -->
+    <stack class="li-audio-action">
+      <div class="skeleton-blk"></div>
+    </stack>
+  </div>
+</template>
