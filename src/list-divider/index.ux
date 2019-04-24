@@ -1,0 +1,9 @@
+<script src="./list-divider.js"></script>
+<style src="./list-divider.less" lang="less"></style>
+
+<template>
+  <div
+    class="list-divider"
+    style="margin-top: {{marginTop}}; margin-bottom: {{marginBottom}};"
+  ></div>
+</template>

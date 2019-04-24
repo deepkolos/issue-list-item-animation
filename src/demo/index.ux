@@ -3,63 +3,57 @@
   width: 100%;
   height: 100%;
 }
-.skeleton{
+.skeleton {
   margin: 15px 20px;
+}
+
+.foot {
+  font-size: 120px;
+  text-align: center;
+  width: 100%;
 }
 </style>
 
+<import name="list-divider" src="../list-divider/index"></import>
 <import name="li-audio-skeleton" src="../li-audio-skeleton/index"></import>
 
 <template>
   <list class="demo-page">
-    <block for="{{skeletonArr}}">
+    <block for="{{(i, item) in listState.list}}">
       <list-item type="li-audio-skeleton" class="skeleton">
         <li-audio-skeleton></li-audio-skeleton>
       </list-item>
+
+      <list-item type="list-divider" @appear="listEmitLoadMore(listIsLast(i))">
+        <list-divider margin-top="{{listState.dividerMargin}}" margin-bottom="{{listIsLast(i) ? '0px' : listState.dividerMargin}}"></list-divider>
+      </list-item>
     </block>
+
+    <list-item type="foot">
+      <text class="foot">底部</text>
+    </list-item>
   </list>
 </template>
 
 <script>
+import { listState, listMethods } from "../mixins/list";
+
 export default {
-  private: {
-    title: "示例页面"
-  },
+  ...listMethods,
 
   public: {
-    skeletonArr: []
+    skeletonArr: [],
+    listState: { ...listState, dividerMargin: "39px" }
   },
 
   onInit() {
-    const arr = [];
-    for (var i = 0; i < 20; i++) {
-      arr.push(i);
-    }
+    this.listOnLoadMore(0);
+  },
 
-    this.skeletonArr = arr;
+  listOnLoadMore() {
+    setTimeout(() => {
+      this.listAppend([{}, {}, {}, {}, {}, {}, {}, {}, {}], true);
+    }, 250);
   }
 };
 </script>
-
-<style>
-.demo-page {
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.title {
-  font-size: 40px;
-  text-align: center;
-}
-
-.btn {
-  width: 550px;
-  height: 86px;
-  margin-top: 75px;
-  border-radius: 43px;
-  background-color: #09ba07;
-  font-size: 30px;
-  color: #ffffff;
-}
-</style>
